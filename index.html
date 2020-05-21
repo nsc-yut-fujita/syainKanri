@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <title>新入社員管理表</title>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h2 class="title">新入社員管理</h2>
+    </div>
+  </header>
+
+  <main>
+    <!--表示部分-->
+    <section class="container">
+      <h2>新入社員</h2>
+      <!-- テーブルクリア -->
+      <button id="checkAll" class="btn btn-success" onclick="syainController.allDone()">すべて削除</button>
+      <table>
+        <thead>
+          <tr>
+            新入社員管理
+          </tr>
+          <th></th>
+          <th>社員番号</th>
+          <th>姓</th>
+          <th>名</th>
+          <th>連絡先</th>
+          <th>Eメールアドレス</th>
+        </thead>
+        
+        
+        <tbody class="syain-table">
+          <tr class="syain">
+            <td><button  onclick="syainController.done(syain.syaban)">削除</button></td>
+            <td>${syain.syaban}</td>
+            <td>${syain.sei}</td>
+            <td>${syain.mei}</td>
+            <td>${syain.tel}</td>
+            <td>${syain.address}</td> 
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  
+  
+  <!-- データ入力フォーム -->
+  <section class="container">
+    <h2　id="form-title">社員を追加する</h2>
+    <form id="syain-form" onsubmit="syainController.addSyain(event);">
+
+      <div class="group">
+        <label for="syaban">社員番号</label>
+        <input id="syaban" name="syaban" type="number" placeholder="社員番号" class="field" />
+      </div>
+
+      <div class="group">
+        <label for="sei">姓</label>
+        <input id="sei" name="sei" type="text" placeholder="姓" class="field" />
+      </div>
+
+      <div class="group">
+        <label for="mei">名</label>
+        <input id="mei" name="mei" type="text" placeholder="名" class="field" />
+      </div>
+
+      <div class="group">
+        <label for="tel">連絡先</label>
+        <input id="tel" name="tel" type="text" placeholder="連絡先" class="field" />
+      </div>
+
+      <div class="group">
+        <label for="address">Eメールアドレス</label>
+        <input id="address" name="address" type="text" placeholder="Eメールアドレス" class="field" />
+      </div>
+
+
+      <button id="addSyain" 　class="button btn-main" type="submit">追加</button>
+      
+      <input type="search" name="in01" size="23" maxlength="20" placeholder="社員番号を入力してください">
+      <!-- <button id="clear-syain" onclick="syainController.clearSyain(event)">削除する</button> -->
+    </form>
+  </section>
+
+  <!-- ボタンで押した内容をスクリプトに渡す -->
+  <script src="service/ConnectionFactory.js"></script>
+  <script src="js/dao/syainDao.js"></script>
+  <script src="js/controller/syainController.js"></script>
+  <script src="js/view/baseView.js"></script>
+  <script src="js/view/syainView.js"></script>
+  <script src="js/model/syain.js"></script>
+  <script src="js/model/syainList.js"></script>
+  <script src="js/view/syainListView.js"></script>
+
+  <script>
+    var syainController = new SyainController();
+
+    
+    
+  </script>
+  
+  <footer class="container"></footer>
+</body>
+
+</html>
